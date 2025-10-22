@@ -12,27 +12,15 @@
     <!-- Exibição da Expressão e Resultado -->
     <TextView
         android:id="@+id/tvExpression"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="24sp"
-        android:gravity="end"
-        android:textColor="#000000"
-        android:padding="8dp"
+        style="@style/DisplayText.Expression"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/display_padding"/>
 
     <TextView
         android:id="@+id/tvResult"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:gravity="end"
-        android:textColor="#000000"
-        android:padding="8dp"
+        style="@style/DisplayText.Result"
         app:layout_constraintTop_toBottomOf="@id/tvExpression"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

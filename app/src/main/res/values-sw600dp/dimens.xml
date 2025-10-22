@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dimensões para tablets e telas grandes -->
+    <dimen name="button_text_size">24sp</dimen>
+    <dimen name="expression_text_size">32sp</dimen>
+    <dimen name="result_text_size">48sp</dimen>
+    <dimen name="display_padding">24dp</dimen>
+    <dimen name="grid_spacing">4dp</dimen>
+</resources>

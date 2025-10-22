@@ -111,25 +111,40 @@ public class CalculatorViewModel {
         notifyStateChanged();
     }
 
-    // NOVO: Método para lidar com funções trigonométricas
+    // Método atualizado para funções trigonométricas
     public void appendTrigFunction(String function) {
-        // Se estiver em modo graus, converte para radianos antes de calcular
-        if (!state.isRadianMode()) {
-            appendFunction(function);
-            // Multiplica por pi/180 para converter de graus para radianos
-            state.setExpression(state.getExpression() + "(3.141592653589793/180)*");
-        } else {
-            appendFunction(function);
+        if (state.isLastWasEquals()) {
+            state.setExpression("");
+            state.setLastWasEquals(false);
         }
-    }
 
-    // NOVO: Método para alternar entre radianos e graus
-    public void toggleRadianMode() {
-        state.toggleRadianMode();
+        String expr = state.getExpression();
+        // Adiciona * se estiver digitando um número antes: 5sin( -> 5*sin(
+        if (!expr.isEmpty() && (Character.isDigit(expr.charAt(expr.length()-1)) || expr.endsWith(")"))) {
+            expr = expr + "*";
+        }
+        
+        // Usa sen em vez de sin para português
+        String displayFunction = function;
+        if (function.equals("sin")) {
+            displayFunction = "sen";
+        }
+        
+        state.setExpression(expr + displayFunction + "(");
+        state.incrementOpenParentheses();
+        state.setLastWasOperator(false);
         notifyStateChanged();
     }
 
-    // NOVO: Método para verificar se está em modo radianos
+    // Método para alternar entre radianos e graus
+    public void toggleRadianMode() {
+        state.toggleRadianMode();
+        // Recalcula o resultado quando mudar o modo
+        calculatePreview();
+        notifyStateChanged();
+    }
+
+    // Método para verificar se está em modo radianos
     public boolean isRadianMode() {
         return state.isRadianMode();
     }

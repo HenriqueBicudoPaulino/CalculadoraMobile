@@ -102,6 +102,9 @@ public class ExpressionParser {
             }
 
             // Adiciona a lógica da função
+            boolean isDegrees = !CalculatorState.getInstance().isRadianMode();
+            double valueInRadians = isDegrees ? Math.toRadians(value) : value;
+
             switch (func) {
                 case "sqrt":
                     if (value < 0) {
@@ -109,18 +112,17 @@ public class ExpressionParser {
                     }
                     return Math.sqrt(value);
                 case "sin":
-                    // Converte para radianos se necessário (se não estiver em modo RAD)
-                    // O controle de RAD/DEG é feito no ViewModel
-                    return Math.sin(value);
+                case "sen":  // Suporte para "sen" em português
+                    return Math.sin(valueInRadians);
                 case "cos":
-                    return Math.cos(value);
+                    return Math.cos(valueInRadians);
                 case "tan":
                     // Verifica divisão por zero (quando cos = 0)
-                    double cos = Math.cos(value);
+                    double cos = Math.cos(valueInRadians);
                     if (Math.abs(cos) < 1e-10) {
                         throw new Exception("Tangente indefinida");
                     }
-                    return Math.tan(value);
+                    return Math.tan(valueInRadians);
                 default:
                     throw new Exception("Função '" + func + "' desconhecida");
             }

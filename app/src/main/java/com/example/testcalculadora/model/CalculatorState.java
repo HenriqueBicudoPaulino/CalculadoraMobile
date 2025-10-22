@@ -1,14 +1,25 @@
 package com.example.testcalculadora.model;
 
 public class CalculatorState {
+    // Singleton instance
+    private static CalculatorState instance;
+
     private String expression;
     private String result;
     private boolean lastWasOperator;
     private boolean lastWasEquals;
     private int openParentheses;
-    private boolean isRadianMode; // NOVO: Controle do modo radianos
+    private boolean isRadianMode;
 
-    public CalculatorState() {
+    // Singleton getter
+    public static synchronized CalculatorState getInstance() {
+        if (instance == null) {
+            instance = new CalculatorState();
+        }
+        return instance;
+    }
+
+    private CalculatorState() {
         this.expression = "";
         this.result = "";
         this.lastWasOperator = false;
