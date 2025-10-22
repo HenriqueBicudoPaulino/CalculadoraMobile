@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#6200EE</item>
-        <item name="colorPrimaryDark">#3700B3</item>
-        <item name="colorAccent">#03DAC5</item>
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">#2C2C2C</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">#5C97FF</item>
+        <item name="android:windowBackground">@color/background_dark</item>
     </style>
 
     <style name="CalcButton" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
-        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_margin">1dp</item>
         <item name="android:background">@drawable/button_bg</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:padding">0dp</item>
@@ -20,10 +21,26 @@
         <item name="android:layout_gravity">fill</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:autoSizeTextType">uniform</item>
-        <item name="android:autoSizeMinTextSize">12sp</item>
+        <item name="android:autoSizeMinTextSize">14sp</item>
         <item name="android:autoSizeMaxTextSize">24sp</item>
         <item name="android:autoSizeStepGranularity">2sp</item>
         <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="CalcButton.Number">
+        <item name="android:background">@drawable/button_number_bg</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="CalcButton.Operator">
+        <item name="android:background">@drawable/button_operator_bg</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="CalcButton.Function">
+        <item name="android:background">@drawable/button_function_bg</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="DisplayText">
@@ -34,16 +51,18 @@
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">start</item>
         <item name="android:scrollHorizontally">true</item>
-        <item name="android:textColor">#000000</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
     <style name="DisplayText.Expression">
-        <item name="android:textSize">@dimen/expression_text_size</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#B3FFFFFF</item>
     </style>
 
     <style name="DisplayText.Result">
-        <item name="android:textSize">@dimen/result_text_size</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
 </resources>

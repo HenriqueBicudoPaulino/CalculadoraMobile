@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">CalculadoraMobile</string>
+    <string name="app_name">Calculadora</string>
 
+    <!-- Números -->
     <string name="button_0">0</string>
     <string name="button_1">1</string>
     <string name="button_2">2</string>
@@ -12,23 +13,33 @@
     <string name="button_8">8</string>
     <string name="button_9">9</string>
 
+    <!-- Operadores Básicos -->
     <string name="button_add">+</string>
-    <string name="button_subtract">-</string>
-    <string name="button_multiply">*</string>
-    <string name="button_divide">/</string>
+    <string name="button_subtract">−</string>
+    <string name="button_multiply">×</string>
+    <string name="button_divide">÷</string>
     <string name="button_equals">=</string>
-    <string name="button_dot">,</string>
+    <string name="button_dot">.</string>
+
+    <!-- Funções Básicas -->
     <string name="button_clear">C</string>
     <string name="button_del">DEL</string>
-    <string name="button_parentheses">( )</string>
+    <string name="button_parentheses_left">(</string>
+    <string name="button_parentheses_right">)</string>
     <string name="button_percent">%</string>
 
-    <!-- NOVAS STRINGS ADICIONADAS -->
+    <!-- Funções Científicas -->
     <string name="button_sqrt">√</string>
-    <string name="button_pow">x^y</string>
+    <string name="button_pow">^</string>
     <string name="button_sin">sin</string>
     <string name="button_cos">cos</string>
     <string name="button_tan">tan</string>
     <string name="button_rad">Rad</string>
+    <string name="button_pi">π</string>
+    <string name="button_e">e</string>
+    <string name="button_abs">|x|</string>
+    <string name="button_exp">EXP</string>
+    <string name="button_log">log</string>
+    <string name="button_ln">ln</string>
 
 </resources>
