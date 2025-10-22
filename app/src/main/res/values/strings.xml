@@ -23,4 +23,12 @@
     <string name="button_parentheses">( )</string>
     <string name="button_percent">%</string>
 
+    <!-- NOVAS STRINGS ADICIONADAS -->
+    <string name="button_sqrt">√</string>
+    <string name="button_pow">x^y</string>
+    <string name="button_sin">sin</string>
+    <string name="button_cos">cos</string>
+    <string name="button_tan">tan</string>
+    <string name="button_rad">Rad</string>
+
 </resources>
