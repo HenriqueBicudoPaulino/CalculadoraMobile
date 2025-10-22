@@ -187,26 +187,23 @@ public class CalculatorViewModel {
         if (state.getExpression().isEmpty()) {
             return;
         }
-        
         try {
             String expression = state.getExpression();
-            
-            // Close open parentheses
             for (int i = 0; i < state.getOpenParentheses(); i++) {
                 expression += ")";
             }
-            
-            // Remove trailing operator
-            while (!expression.isEmpty() && 
-                   NumberFormatter.isOperator(String.valueOf(expression.charAt(expression.length() - 1)))) {
+            while (!expression.isEmpty() &&
+                    NumberFormatter.isOperator(String.valueOf(expression.charAt(expression.length() - 1)))) {
                 expression = expression.substring(0, expression.length() - 1);
             }
-            
             double result = parser.evaluate(expression);
-            state.setResult(NumberFormatter.format(result));
+            String formattedResult = NumberFormatter.format(result); // 1. Formata e armazena
+            state.setResult(formattedResult);       // 2. Define o resultado (para tvResult)
+            state.setExpression(formattedResult);   // 3. Define a expressão (para tvExpression)
+            state.setResult("");
             state.setLastWasEquals(true);
             state.setLastWasOperator(false);
-            
+            state.setOpenParentheses(0);            // 4. Zera a contagem de parênteses
             notifyStateChanged();
         } catch (Exception e) {
             state.setResult("Erro");

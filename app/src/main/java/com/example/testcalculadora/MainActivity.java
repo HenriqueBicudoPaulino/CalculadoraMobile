@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements CalculatorViewMod
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.telaInicial);
+        setContentView(R.layout.telainicial);
         
         initializeViews();
         initializeViewModel();
