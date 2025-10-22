@@ -15,7 +15,7 @@ public class CalculatorViewModel {
     }
 
     public CalculatorViewModel() {
-        this.state = new CalculatorState();
+        this.state = CalculatorState.getInstance();
         this.parser = new ExpressionParser();
     }
 
