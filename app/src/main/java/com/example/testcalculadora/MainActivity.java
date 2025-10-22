@@ -127,37 +127,83 @@ public class MainActivity extends AppCompatActivity implements CalculatorViewMod
     
     private void setupScientificButtons() {
         // Configuração dos botões científicos (modo paisagem)
-        // Por enquanto, apenas listeners vazios para evitar erros
         
-        View.OnClickListener scientificClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO: Implementar funcionalidades científicas
-                // Por enquanto, não faz nada
-            }
-        };
-        
-        // Verifica se os botões existem (modo paisagem)
+        // Sin button
         Button btnSin = findViewById(R.id.btnSin);
-        if (btnSin != null) btnSin.setOnClickListener(scientificClickListener);
+        if (btnSin != null) {
+            btnSin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewModel.appendSin();
+                }
+            });
+        }
         
+        // Cos button
         Button btnCos = findViewById(R.id.btnCos);
-        if (btnCos != null) btnCos.setOnClickListener(scientificClickListener);
+        if (btnCos != null) {
+            btnCos.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewModel.appendCos();
+                }
+            });
+        }
         
+        // Tan button
         Button btnTan = findViewById(R.id.btnTan);
-        if (btnTan != null) btnTan.setOnClickListener(scientificClickListener);
+        if (btnTan != null) {
+            btnTan.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewModel.appendTan();
+                }
+            });
+        }
         
+        // Power button
         Button btnPower = findViewById(R.id.btnPower);
-        if (btnPower != null) btnPower.setOnClickListener(scientificClickListener);
+        if (btnPower != null) {
+            btnPower.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewModel.appendPower();
+                }
+            });
+        }
         
+        // Square root button
         Button btnSqrt = findViewById(R.id.btnSqrt);
-        if (btnSqrt != null) btnSqrt.setOnClickListener(scientificClickListener);
+        if (btnSqrt != null) {
+            btnSqrt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewModel.appendSqrt();
+                }
+            });
+        }
         
+        // Log button
         Button btnLog = findViewById(R.id.btnLog);
-        if (btnLog != null) btnLog.setOnClickListener(scientificClickListener);
+        if (btnLog != null) {
+            btnLog.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewModel.appendLog();
+                }
+            });
+        }
         
+        // Natural log button
         Button btnLn = findViewById(R.id.btnLn);
-        if (btnLn != null) btnLn.setOnClickListener(scientificClickListener);
+        if (btnLn != null) {
+            btnLn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewModel.appendLn();
+                }
+            });
+        }
     }
     
     @Override
