@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements CalculatorViewMod
         setupNumberButtons();
         setupOperatorButtons();
         setupFunctionButtons();
+        setupScientificButtons();
     }
     
     private void setupNumberButtons() {
@@ -122,6 +123,41 @@ public class MainActivity extends AppCompatActivity implements CalculatorViewMod
                 viewModel.calculateResult();
             }
         });
+    }
+    
+    private void setupScientificButtons() {
+        // Configuração dos botões científicos (modo paisagem)
+        // Por enquanto, apenas listeners vazios para evitar erros
+        
+        View.OnClickListener scientificClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: Implementar funcionalidades científicas
+                // Por enquanto, não faz nada
+            }
+        };
+        
+        // Verifica se os botões existem (modo paisagem)
+        Button btnSin = findViewById(R.id.btnSin);
+        if (btnSin != null) btnSin.setOnClickListener(scientificClickListener);
+        
+        Button btnCos = findViewById(R.id.btnCos);
+        if (btnCos != null) btnCos.setOnClickListener(scientificClickListener);
+        
+        Button btnTan = findViewById(R.id.btnTan);
+        if (btnTan != null) btnTan.setOnClickListener(scientificClickListener);
+        
+        Button btnPower = findViewById(R.id.btnPower);
+        if (btnPower != null) btnPower.setOnClickListener(scientificClickListener);
+        
+        Button btnSqrt = findViewById(R.id.btnSqrt);
+        if (btnSqrt != null) btnSqrt.setOnClickListener(scientificClickListener);
+        
+        Button btnLog = findViewById(R.id.btnLog);
+        if (btnLog != null) btnLog.setOnClickListener(scientificClickListener);
+        
+        Button btnLn = findViewById(R.id.btnLn);
+        if (btnLn != null) btnLn.setOnClickListener(scientificClickListener);
     }
     
     @Override

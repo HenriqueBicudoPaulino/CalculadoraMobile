@@ -23,4 +23,13 @@
     <string name="button_parentheses">( )</string>
     <string name="button_percent">%</string>
 
+    <!-- Funções científicas -->
+    <string name="button_sin">sin</string>
+    <string name="button_cos">cos</string>
+    <string name="button_tan">tan</string>
+    <string name="button_power">x^y</string>
+    <string name="button_sqrt">√</string>
+    <string name="button_log">log</string>
+    <string name="button_ln">ln</string>
+
 </resources>
