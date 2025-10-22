@@ -91,27 +91,47 @@ public class CalculatorViewModel {
         notifyStateChanged();
     }
 
-    // NOVO: Método para adicionar funções como sqrt
+    // Método para adicionar funções matemáticas
     public void appendFunction(String function) {
-        if (function.equals("sqrt")) {
-            if (state.isLastWasEquals()) {
-                state.setExpression("");
-                state.setLastWasEquals(false);
-            }
-
-            String expr = state.getExpression();
-            // Adiciona * se estiver digitando um número antes: 5sqrt( -> 5*sqrt(
-            if (!expr.isEmpty() && (Character.isDigit(expr.charAt(expr.length()-1)) || expr.endsWith(")")) ) {
-                state.setExpression(expr + "*sqrt(");
-            } else {
-                state.setExpression(expr + "sqrt(");
-            }
-
-            state.incrementOpenParentheses();
-            state.setLastWasOperator(false);
-            notifyStateChanged();
+        if (state.isLastWasEquals()) {
+            state.setExpression("");
+            state.setLastWasEquals(false);
         }
-        // Futuramente, sin, cos, tan podem ser adicionados aqui
+
+        String expr = state.getExpression();
+        // Adiciona * se estiver digitando um número antes: 5sqrt( -> 5*sqrt(
+        if (!expr.isEmpty() && (Character.isDigit(expr.charAt(expr.length()-1)) || expr.endsWith(")"))) {
+            state.setExpression(expr + "*" + function + "(");
+        } else {
+            state.setExpression(expr + function + "(");
+        }
+
+        state.incrementOpenParentheses();
+        state.setLastWasOperator(false);
+        notifyStateChanged();
+    }
+
+    // NOVO: Método para lidar com funções trigonométricas
+    public void appendTrigFunction(String function) {
+        // Se estiver em modo graus, converte para radianos antes de calcular
+        if (!state.isRadianMode()) {
+            appendFunction(function);
+            // Multiplica por pi/180 para converter de graus para radianos
+            state.setExpression(state.getExpression() + "(3.141592653589793/180)*");
+        } else {
+            appendFunction(function);
+        }
+    }
+
+    // NOVO: Método para alternar entre radianos e graus
+    public void toggleRadianMode() {
+        state.toggleRadianMode();
+        notifyStateChanged();
+    }
+
+    // NOVO: Método para verificar se está em modo radianos
+    public boolean isRadianMode() {
+        return state.isRadianMode();
     }
 
     public void appendPercent() {

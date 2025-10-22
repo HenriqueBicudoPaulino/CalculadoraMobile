@@ -108,13 +108,19 @@ public class ExpressionParser {
                         throw new Exception("Raiz de núm. negativo");
                     }
                     return Math.sqrt(value);
-                // Futuramente:
-                // case "sin":
-                //    return Math.sin(value);
-                // case "cos":
-                //    return Math.cos(value);
-                // case "tan":
-                //    return Math.tan(value);
+                case "sin":
+                    // Converte para radianos se necessário (se não estiver em modo RAD)
+                    // O controle de RAD/DEG é feito no ViewModel
+                    return Math.sin(value);
+                case "cos":
+                    return Math.cos(value);
+                case "tan":
+                    // Verifica divisão por zero (quando cos = 0)
+                    double cos = Math.cos(value);
+                    if (Math.abs(cos) < 1e-10) {
+                        throw new Exception("Tangente indefinida");
+                    }
+                    return Math.tan(value);
                 default:
                     throw new Exception("Função '" + func + "' desconhecida");
             }

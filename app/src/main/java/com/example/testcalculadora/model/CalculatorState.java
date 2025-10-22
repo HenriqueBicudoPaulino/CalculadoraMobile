@@ -6,6 +6,7 @@ public class CalculatorState {
     private boolean lastWasOperator;
     private boolean lastWasEquals;
     private int openParentheses;
+    private boolean isRadianMode; // NOVO: Controle do modo radianos
 
     public CalculatorState() {
         this.expression = "";
@@ -13,6 +14,7 @@ public class CalculatorState {
         this.lastWasOperator = false;
         this.lastWasEquals = false;
         this.openParentheses = 0;
+        this.isRadianMode = false; // Começa em modo graus
     }
 
     // Getters
@@ -71,5 +73,20 @@ public class CalculatorState {
         this.lastWasOperator = false;
         this.lastWasEquals = false;
         this.openParentheses = 0;
+        // Não resetamos o modo radianos, pois é uma configuração do usuário
+    }
+
+    // NOVO: Getters e Setters para o modo radianos
+    public boolean isRadianMode() {
+        return isRadianMode;
+    }
+
+    public void setRadianMode(boolean radianMode) {
+        isRadianMode = radianMode;
+    }
+
+    // NOVO: Toggle do modo radianos
+    public void toggleRadianMode() {
+        isRadianMode = !isRadianMode;
     }
 }

@@ -140,9 +140,8 @@ public class MainActivity extends AppCompatActivity implements CalculatorViewMod
         });
     }
 
-    // NOVO: Método para configurar botões científicos (que só existem no layout landscape)
+    // Método para configurar botões científicos (que só existem no layout landscape)
     private void setupScientificButtons() {
-
         // Raiz Quadrada (sqrt)
         setSafeClickListener(R.id.btnSqrt, new View.OnClickListener() {
             @Override
@@ -151,18 +150,39 @@ public class MainActivity extends AppCompatActivity implements CalculatorViewMod
             }
         });
 
-        // Botões que ainda não têm lógica
-        View.OnClickListener todoListener = new View.OnClickListener() {
+        // Funções Trigonométricas
+        setSafeClickListener(R.id.btnSin, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Implementar lógica no ViewModel
+                viewModel.appendTrigFunction("sin");
             }
-        };
+        });
 
-        setSafeClickListener(R.id.btnSin, todoListener);
-        setSafeClickListener(R.id.btnCos, todoListener);
-        setSafeClickListener(R.id.btnTan, todoListener);
-        setSafeClickListener(R.id.btnRad, todoListener);
+        setSafeClickListener(R.id.btnCos, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.appendTrigFunction("cos");
+            }
+        });
+
+        setSafeClickListener(R.id.btnTan, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.appendTrigFunction("tan");
+            }
+        });
+
+        // Botão RAD/DEG
+        final Button btnRad = findViewById(R.id.btnRad);
+        if (btnRad != null) {
+            btnRad.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewModel.toggleRadianMode();
+                    btnRad.setText(viewModel.isRadianMode() ? "DEG" : "RAD");
+                }
+            });
+        }
     }
 
     // NOVO: Método helper para adicionar listeners com segurança (evita crash)
