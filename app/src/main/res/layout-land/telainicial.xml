@@ -159,16 +159,16 @@
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 android:layout_margin="2dp"/>
-        </GridLayout>
 
-        <!-- Main Calculator -->
+            <Button
                 android:id="@+id/btnClear"
                 android:text="@string/button_clear"
                 style="@style/CalcButton"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"/>
+                android:layout_rowWeight="1"
+                android:layout_margin="2dp"/>
         </GridLayout>
 
         <!-- Main Calculator -->
