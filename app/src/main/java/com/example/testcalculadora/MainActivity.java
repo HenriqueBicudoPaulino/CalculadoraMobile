@@ -115,11 +115,19 @@ public class MainActivity extends AppCompatActivity implements CalculatorViewMod
             }
         });
 
-        // Parentheses button
-        findViewById(R.id.btnParentheses).setOnClickListener(new View.OnClickListener() {
+        // Left Parenthesis button
+        findViewById(R.id.btnParenLeft).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModel.addParentheses();
+                viewModel.appendExpression("(");
+            }
+        });
+
+        // Right Parenthesis button
+        findViewById(R.id.btnParenRight).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.appendExpression(")");
             }
         });
 
