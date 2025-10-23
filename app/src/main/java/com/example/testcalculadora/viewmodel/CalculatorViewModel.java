@@ -92,6 +92,19 @@ public class CalculatorViewModel {
     }
 
     // Método para adicionar funções matemáticas
+    // Método para adicionar expressões (como parênteses)
+    public void appendExpression(String expression) {
+        if (state.isLastWasEquals()) {
+            state.setExpression("");
+            state.setLastWasEquals(false);
+        }
+        
+        state.setExpression(state.getExpression() + expression);
+        state.setLastWasOperator(false);
+        notifyStateChanged();
+        calculatePreview();
+    }
+
     public void appendFunction(String function) {
         if (state.isLastWasEquals()) {
             state.setExpression("");
