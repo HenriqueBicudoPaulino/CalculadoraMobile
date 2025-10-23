@@ -34,6 +34,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvExpression"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Container principal dividido em dois painéis -->
     <androidx.constraintlayout.widget.ConstraintLayout
