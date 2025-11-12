@@ -249,4 +249,71 @@ public class CalculatorViewModel {
             listener.onStateChanged(state.getExpression(), state.getResult());
         }
     }
+    
+    // Scientific functions
+    
+    public void appendSin() {
+        appendFunction("sin");
+    }
+    
+    public void appendCos() {
+        appendFunction("cos");
+    }
+    
+    public void appendTan() {
+        appendFunction("tan");
+    }
+    
+    public void appendSqrt() {
+        appendFunction("sqrt");
+    }
+    
+    public void appendLog() {
+        appendFunction("log");
+    }
+    
+    public void appendLn() {
+        appendFunction("ln");
+    }
+    
+    public void appendPower() {
+        if (state.getExpression().isEmpty()) {
+            return;
+        }
+        
+        if (state.isLastWasEquals()) {
+            String result = state.getResult();
+            if (!result.isEmpty()) {
+                state.setExpression(result);
+            }
+            state.setLastWasEquals(false);
+        }
+        
+        // Don't allow power after operator
+        if (state.isLastWasOperator()) {
+            return;
+        }
+        
+        state.setExpression(state.getExpression() + "^");
+        state.setLastWasOperator(true);
+        notifyStateChanged();
+    }
+    
+    private void appendFunction(String functionName) {
+        if (state.isLastWasEquals()) {
+            state.setExpression("");
+            state.setLastWasEquals(false);
+        }
+        
+        // If there's a number or closing parenthesis before the function, add multiplication
+        if (!state.getExpression().isEmpty() && !state.isLastWasOperator() && 
+            !state.getExpression().endsWith("(")) {
+            state.setExpression(state.getExpression() + "*");
+        }
+        
+        state.setExpression(state.getExpression() + functionName + "(");
+        state.incrementOpenParentheses();
+        state.setLastWasOperator(false);
+        notifyStateChanged();
+    }
 }
